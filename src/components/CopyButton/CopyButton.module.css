@@ -1,0 +1,51 @@
+/* 32 px icon button with a 44 px hit area. */
+.button {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-secondary);
+  font-family: var(--via-font-ui);
+  cursor: pointer;
+  transition: background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
+
+.button[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+  color: var(--via-semantic-text-primary);
+}
+
+.button[data-pressed] {
+  background: var(--via-semantic-surface-pressed);
+}
+
+.withText {
+  width: auto;
+  height: 36px;
+  padding: 0 10px;
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-metadata);
+  font-weight: 700;
+}
+
+.withText svg {
+  color: var(--via-semantic-text-secondary);
+}
+
+.withText::before {
+  inset: -4px 0;
+}

@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable, SpaceBar, RadiusBox } from './TokenDocs';
+
+<Meta title="Foundations/Spacing and shape" />
+
+# Spacing and shape
+
+## Spacing
+
+Numbered steps (`space.1`–`5`) are layout spacing; named steps are component internals.
+
+<TokenTable prefix="via.space." visual={SpaceBar} />
+
+## Radius
+
+Three steps: **control/field 20** (pills: buttons, fields, chips, pagination, side items),
+**panel 12** (cards, panels, banners, dialogs, menus, toasts) and **inner 8** (rows and
+items inside a card or menu, tooltips).
+
+<TokenTable prefix="via.radius." visual={RadiusBox} />
+
+## Sizes
+
+Touch targets are 48 px (44 px minimum). Compact visuals such as 32 px buttons sit
+inside a 44–48 px hit area.
+
+<TokenTable prefix="via.size." />

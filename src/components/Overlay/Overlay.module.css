@@ -1,0 +1,64 @@
+/* Shared overlay pieces: scrim, close button, motion. */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--via-layer-modal);
+  display: flex;
+  background: var(--via-semantic-overlay-scrim);
+}
+
+.scrim[data-entering] {
+  animation: fade var(--via-motion-overlay-enter) var(--via-motion-easing-emphasised);
+}
+
+.scrim[data-exiting] {
+  animation: fade var(--via-motion-overlay-exit) var(--via-motion-easing-exit) reverse;
+}
+
+.close {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.close[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+  color: var(--via-semantic-text-primary);
+}
+
+.close[data-pressed] {
+  background: var(--via-semantic-surface-pressed);
+}
+
+.heading {
+  margin: 0;
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-display);
+  font-weight: 400;
+  letter-spacing: var(--via-type-tracking-display);
+  line-height: 1.25;
+  outline: none;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrim[data-entering],
+  .scrim[data-exiting] {
+    animation-duration: var(--via-motion-reduced);
+  }
+}

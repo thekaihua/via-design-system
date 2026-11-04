@@ -1,0 +1,142 @@
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--via-space-3);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr) 400px;
+  }
+}
+
+.primary,
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-3);
+  min-width: 0;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-3);
+}
+
+/* Centred single task: sign in, reset password, verify, contact (Tasks & recovery). */
+.task {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-3);
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--via-space-4) var(--via-space-field);
+  font-family: var(--via-font-ui);
+}
+
+.wideTask {
+  max-width: 600px;
+}
+
+.taskTitle {
+  margin: 0;
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-display);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: var(--via-type-tracking-display);
+}
+
+.taskIntro {
+  margin: 0;
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-label-line);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-3);
+}
+
+.note {
+  margin: 0;
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+}
+
+.summaryStrip {
+  margin-bottom: var(--via-space-3);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--via-space-field);
+}
+
+/* Settings view: intro on the left, fields on the right ≥ 1024 px. */
+.settingsSection {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--via-space-field);
+  padding-block: var(--via-space-3);
+  border-bottom: 1px solid var(--via-semantic-border-decorative);
+}
+
+@media (min-width: 1024px) {
+  .settingsSection {
+    grid-template-columns: 320px minmax(0, 560px);
+    gap: var(--via-space-4);
+  }
+}
+
+.sectionTitle {
+  margin: 0 0 var(--via-space-small);
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-body);
+  font-weight: 700;
+}
+
+.sectionFields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-3);
+}
+
+/* Pattern / Review details: one answer per row, full-width actions. */
+.oneColumn {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.stackedActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-control);
+}
+
+/* Sign in: the form, plus the sign-in illustration beside it from 1024 px. */
+.signInSplit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--via-space-5);
+  min-height: 100%;
+}
+
+.signInSplit > .task {
+  margin: 0;
+}
+
+.signInArt {
+  display: none;
+  flex: 0 1 400px;
+}
+
+@media (min-width: 1024px) {
+  .signInArt {
+    display: block;
+  }
+}

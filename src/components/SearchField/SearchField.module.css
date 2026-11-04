@@ -1,0 +1,50 @@
+.search {
+  min-width: 0;
+}
+
+/* Remove the browser's own clear button; ours is keyboard and screen-reader friendly. */
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-decoration {
+  appearance: none;
+}
+
+.shortcut {
+  flex: none;
+  min-width: 20px;
+  padding: 0 6px;
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: 4px;
+  color: var(--via-semantic-text-secondary);
+  font-family: var(--via-font-ui);
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.clear {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: -4px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--via-semantic-text-secondary);
+  cursor: pointer;
+}
+
+.clear::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+}
+
+.clear[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+  color: var(--via-semantic-text-primary);
+}

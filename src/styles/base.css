@@ -1,0 +1,60 @@
+/* Base element styles: motion preference, theme, box sizing, focus ring, visually hidden. */
+/* Respect reduced motion: every duration token collapses to via.motion.reduced (0ms). */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --via-motion-feedback: var(--via-motion-reduced);
+    --via-motion-transition: var(--via-motion-reduced);
+    --via-motion-overlay-enter: var(--via-motion-reduced);
+    --via-motion-overlay-exit: var(--via-motion-reduced);
+  }
+}
+
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* Sizes include padding and borders: a 72 px header is 72 px (Application / Header). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* The hidden attribute always hides, even when a component sets display (e.g. collapsed nav groups). */
+[hidden] {
+  display: none !important;
+}
+
+html,
+body {
+  background: var(--via-semantic-surface-default);
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-ui);
+  font-size: var(--via-type-body);
+  line-height: var(--via-type-body-line);
+  letter-spacing: var(--via-type-tracking-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Focus: 3 px ring with a 2 px gap that follows the element's shape (State matrix, Behaviour spec). */
+:focus-visible {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: var(--via-focus-gap);
+}
+
+/* Hides content visually but keeps it available to screen readers. */
+.via-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

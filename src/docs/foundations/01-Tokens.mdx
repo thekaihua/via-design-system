@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Tokens" />
+
+# Tokens
+
+All colours, type, spacing, radii, motion and layers come from the variables in the
+design file. `npm run tokens` reads it and writes three files to `src/tokens/`, which are
+committed — never edit them by hand:
+
+| File | Use |
+| --- | --- |
+| `tokens.css` | CSS custom properties. Light on `:root`, dark on `[data-theme="dark"]` |
+| `tokens.json` | Every token with its resolved light and dark value, for tools and docs |
+| `tokens.ts` | `token(name)` helper, typed `TokenName`, and `breakpoints`, `layers`, `durations` as numbers |
+
+When the design file is available (its path in `VIA_PEN_FILE` or `.design-file`), `npm test` fails if these files are out of date with it. To change a token without the design file, open an issue or pull request describing the change.
+
+## Naming
+
+Dots become hyphens with a `--` prefix: `via.semantic.text.primary` → `--via-semantic-text-primary`.
+
+| Group | Use in components? |
+| --- | --- |
+| `via.semantic.*` | **Yes.** All component colours. Themed. |
+| `via.chart.*` | Yes, for charts only |
+| `via.color.*` | **No.** Raw palette; reach it through a semantic token |
+| `via.font.*`, `via.type.*` | Yes. Families include their fallbacks |
+| `via.space.*`, `via.size.*`, `via.radius.*` | Yes |
+| `via.focus.*`, `via.motion.*`, `via.layer.*`, `via.icon.*` | Yes |
+| `via.breakpoint.*` | In JS via `breakpoints`; CSS media queries can't read custom properties |
+
+## Rules the generator enforces
+
+- Aliases (for example `via.chart.grid` → `via.semantic.border.decorative`) are written as **resolved values** in both themes, never as `var()` chains. A `var()` alias on `:root` would stay light inside a dark subtree.
+- Numbers get units by group: px for sizes, ms for motion, none for layers and line heights.
+- With `prefers-reduced-motion: reduce`, every duration becomes `--via-motion-reduced` (0 ms).
+
+## In code
+
+```css
+.card {
+  background: var(--via-semantic-surface-raised);
+  border-radius: var(--via-radius-panel);
+  padding: var(--via-space-3);
+}
+```
+
+```ts
+import { token, breakpoints } from '../tokens/tokens';
+
+const style = { color: token('via.semantic.text.secondary') };
+const isWide = window.matchMedia(`(min-width: ${breakpoints.wide}px)`).matches;
+```

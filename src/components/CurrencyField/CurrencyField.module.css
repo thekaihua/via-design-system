@@ -1,0 +1,83 @@
+.control {
+  padding-left: 0;
+  overflow: hidden;
+}
+
+/* Currency code segment (Field / Currency › Currency). */
+.prefix {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+  padding: 0 10px;
+  border-right: 1px solid var(--via-semantic-border-control);
+  background: var(--via-semantic-surface-subtle);
+  color: var(--via-semantic-text-primary);
+  font-weight: 700;
+}
+
+.prefixButton {
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: var(--via-radius-field) 0 0 var(--via-radius-field);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.prefixButton svg {
+  color: var(--via-semantic-text-secondary);
+}
+
+.prefixButton[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.pickerRoot {
+  display: contents;
+}
+
+.input {
+  /* Amounts align to the end, like table figures (Field / Currency). */
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+
+.popover {
+  min-width: 96px;
+  max-height: 280px;
+  overflow: auto;
+  padding: var(--via-space-micro);
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-raised);
+  box-shadow: 0 8px var(--via-elevation-dialog) rgb(0 0 0 / 0.12);
+  z-index: var(--via-layer-dropdown);
+}
+
+.listbox {
+  outline: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 var(--via-space-control);
+  border-radius: var(--via-radius-inner);
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-ui);
+  font-size: var(--via-type-label);
+  cursor: pointer;
+  outline: none;
+}
+
+.option[data-focused] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.option[data-selected] {
+  font-weight: 700;
+}

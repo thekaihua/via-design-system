@@ -1,0 +1,519 @@
+/* ---------- Layout ---------- */
+:global(html:has(.shell)) {
+  /* In-page links and focused fields land below the sticky header, not under it. */
+  scroll-padding-top: 88px;
+}
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--via-semantic-surface-default);
+  font-family: var(--via-font-ui);
+}
+
+.headerSlot {
+  position: sticky;
+  top: 0;
+  z-index: var(--via-layer-sticky);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.sidebarSlot {
+  position: sticky;
+  top: 72px;
+  flex: none;
+  height: calc(100dvh - 72px);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  /* Keep the top of main (and anything focused or linked inside it) clear of the sticky header (WCAG 2.4.11). */
+  scroll-margin-top: 72px;
+  max-width: var(--via-breakpoint-wide-desktop);
+  padding: var(--via-space-3) var(--via-space-4);
+  outline: none;
+}
+
+.mobile .main {
+  padding: var(--via-space-field);
+}
+
+/* ---------- Skip link (Navigation / Skip link): hidden until focused ---------- */
+.skipLink {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: var(--via-layer-tooltip);
+  padding: 14px var(--via-space-field);
+  border: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  border-radius: var(--via-radius-control);
+  background: var(--via-semantic-surface-default);
+  color: var(--via-semantic-text-link);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+  transform: translateY(-200%);
+}
+
+.skipLink:focus {
+  transform: none;
+  outline: none;
+}
+
+/* ---------- Brand ---------- */
+.brand {
+  --via-logo-accent: var(--via-semantic-action-background);
+  --via-logo-surface: var(--via-semantic-surface-default);
+  display: inline-block;
+  flex: none;
+  color: var(--via-color-brand);
+  line-height: 0;
+}
+
+.brand :global(svg) {
+  width: 100%;
+  height: 100%;
+}
+
+:root[data-theme='dark'] .brand {
+  --via-logo-accent: var(--via-semantic-text-link);
+  color: var(--via-semantic-text-primary);
+}
+
+/* ---------- Header (Application / Header) ---------- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--via-space-3);
+  height: 72px;
+  padding: var(--via-space-field) var(--via-space-5) var(--via-space-field) 32px;
+  border-bottom: 1px solid var(--via-semantic-border-decorative);
+  background: var(--via-semantic-surface-default);
+}
+
+.mobile .header {
+  height: 60px;
+  padding: 0 var(--via-space-small);
+  gap: var(--via-space-small);
+}
+
+.headerStart {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-micro);
+}
+
+.brandLink {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: var(--via-radius-inner);
+}
+
+.headerSearch {
+  flex: 0 1 400px;
+  min-width: 0;
+}
+
+.tablet .headerSearch {
+  flex-basis: 240px;
+}
+
+.headerUtilities {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-field);
+}
+
+.mobile .headerUtilities {
+  gap: var(--via-space-micro);
+}
+
+.iconButton {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-secondary);
+  cursor: pointer;
+}
+
+.iconButton[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+  color: var(--via-semantic-text-primary);
+}
+
+.dot {
+  position: absolute;
+  top: 10px;
+  right: 11px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--via-semantic-surface-default);
+  border-radius: 50%;
+  background: var(--via-semantic-destructive-background);
+  box-sizing: content-box;
+}
+
+.mobile .headerNarrow {
+  gap: var(--via-space-small);
+  padding-inline: var(--via-space-micro) var(--via-space-small);
+}
+
+.headerNarrow .headerStart,
+.headerNarrow .headerUtilities {
+  gap: 2px;
+}
+
+.account {
+  position: relative;
+}
+
+/* Environment control: 32 px pill in a 44 px target. */
+.environment {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--via-space-micro);
+  height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: var(--via-semantic-neutral-background);
+  color: var(--via-semantic-neutral-foreground);
+  font: inherit;
+  font-size: var(--via-type-metadata);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.environment::before {
+  content: '';
+  position: absolute;
+  inset: -6px 0;
+}
+
+.environmentLive {
+  background: var(--via-semantic-success-background);
+  color: var(--via-semantic-success-foreground);
+}
+
+.environment[data-hovered] {
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.account {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-primary);
+  font: inherit;
+  font-size: var(--via-type-label);
+  cursor: pointer;
+}
+
+.account[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--via-semantic-info-background);
+  color: var(--via-semantic-info-foreground);
+  font-size: var(--via-type-metadata);
+  font-weight: 700;
+}
+
+.menuContext {
+  display: block;
+  color: var(--via-semantic-text-secondary);
+  font-size: 12px;
+}
+
+/* ---------- Sidebar (Application / Sidebar) ---------- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-3);
+  width: 248px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 28px 20px;
+  border-right: 1px solid var(--via-semantic-border-decorative);
+  background: var(--via-semantic-surface-default);
+}
+
+.rail {
+  width: 72px;
+  padding: var(--via-space-field) 12px;
+  align-items: center;
+}
+
+.drawerOverlay {
+  justify-content: flex-start;
+}
+
+.drawer {
+  width: min(300px, 85vw);
+  height: 100dvh;
+  outline: none;
+}
+
+.drawer[data-entering] {
+  animation: drawerIn var(--via-motion-overlay-enter) var(--via-motion-easing-emphasised);
+}
+
+@keyframes drawerIn {
+  from {
+    transform: translateX(-24px);
+    opacity: 0;
+  }
+}
+
+.drawerDialog {
+  height: 100%;
+  outline: none;
+}
+
+.drawerDialog .sidebar {
+  width: 100%;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.caption {
+  margin: 0;
+  padding: 0 var(--via-space-field);
+  color: var(--via-semantic-text-secondary);
+  font-size: 12px;
+}
+
+.workspace {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-control);
+  width: 100%;
+  min-height: 44px;
+  padding: var(--via-space-small) var(--via-space-field);
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.rail .workspace {
+  justify-content: center;
+  padding: var(--via-space-small);
+}
+
+.workspaceButton {
+  cursor: pointer;
+}
+
+.workspaceButton[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.workspaceIcon {
+  flex: none;
+  color: var(--via-semantic-text-link);
+}
+
+.workspaceText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.workspaceName {
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+  line-height: var(--via-type-label-line);
+}
+
+.workspaceContext {
+  color: var(--via-semantic-text-secondary);
+  font-size: 12px;
+}
+
+/* ---------- Navigation items (Navigation / Side item) ---------- */
+.navList,
+.navChildren {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navChildren {
+  gap: var(--via-space-micro);
+  margin-top: var(--via-space-micro);
+  padding-left: 20px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-control);
+  width: 100%;
+  min-height: 48px;
+  padding: 14px var(--via-space-field);
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-secondary);
+  font: inherit;
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-label-line);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.rail .navItem {
+  justify-content: center;
+  width: 48px;
+  padding: 14px;
+}
+
+.navItemNested {
+  min-height: 44px;
+  padding: 10px var(--via-space-control);
+}
+
+.navItem[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+  color: var(--via-semantic-text-primary);
+}
+
+/* Current page: filled pill, no edge bar (Tokens 1.1 radius note). */
+.navItemActive,
+.navItemActive[data-hovered] {
+  background: var(--via-semantic-navigation-active-background);
+  color: var(--via-semantic-navigation-active-foreground);
+  font-weight: 700;
+}
+
+.navDisclosure {
+  font-weight: 700;
+}
+
+.navIcon {
+  flex: none;
+}
+
+.navLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+.navChevron {
+  flex: none;
+  color: var(--via-semantic-text-secondary);
+}
+
+.navBadge {
+  flex: none;
+  min-width: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--via-semantic-neutral-background);
+  color: var(--via-semantic-neutral-foreground);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.navGroup {
+  width: 100%;
+}
+
+/* ---------- Page header (Application / Page header) ---------- */
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-3);
+  margin-bottom: var(--via-space-3);
+}
+
+.pageHeaderRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--via-space-3);
+}
+
+.pageHeading {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.pageContext {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+}
+
+.pageTitle {
+  margin: 0;
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-display);
+  font-size: var(--via-type-form-title);
+  font-weight: 400;
+  letter-spacing: var(--via-type-tracking-display);
+  line-height: 1.2;
+}
+
+.pageDescription {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-body-line);
+}
+
+.pageActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--via-space-small);
+}
+
+@media (max-width: 767px) {
+  .pageHeaderRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

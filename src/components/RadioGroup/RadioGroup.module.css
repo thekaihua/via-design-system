@@ -1,0 +1,36 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--via-font-ui);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: var(--via-space-3);
+}
+
+/* The dot only shows when selected. */
+.dotSlot {
+  display: none;
+}
+
+[data-selected] .dotSlot {
+  display: inline-flex;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.optionDescription {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+}

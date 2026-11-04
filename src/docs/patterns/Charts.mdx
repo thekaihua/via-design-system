@@ -1,0 +1,54 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import * as ChartStories from '../../components/Chart/Chart.stories';
+
+<Meta title="Patterns/Chart guidance" />
+
+# Chart guidance
+
+Start from the question the chart answers, then pick the form. One `Chart` component covers every chart
+in the design (Request activity, Webhook activity, Payment volume are configurations of it).
+
+## Which chart for which question
+
+| Question | Use | Notes |
+| --- | --- | --- |
+| How did something change over time? | `type="line"` | Up to 3 series. Compare with a previous period as a dashed line. |
+| How much per day / bucket? | `type="bar"` | Counts per bucket, e.g. webhook deliveries per 30 minutes. |
+| How much has built up? | `type="area"` | Cumulative totals, e.g. volume so far today. One filled series. |
+| Is a number OK right now? | `Metric` | Add `trend` for a sparkline; always say the period and compare in words ("Up 8.2%"). |
+| How close to a limit? | `Meter` | Warning at 80 %, destructive at 90 %. The text adds the percentage. |
+
+## Series of very different sizes: stack, don't add a second axis
+
+Failures next to successes (≈ 50 vs ≈ 2,000) share one y axis, so the smaller line is squashed
+flat at zero and its changes can't be seen. Give it its own **panel** (`series.panel`): each
+panel has its own scale and they share the x axis, so days still line up.
+
+<Story of={ChartStories.Stacked} />
+
+Don't use a second y axis for two counts. Where the lines sit and cross depends on an arbitrary
+axis range, so readers see relationships that aren't in the data. A second axis is only reasonable
+for a different **unit** (count against a rate %), and the system doesn't provide one today.
+
+If the question is "is it getting worse?", consider plotting the **rate** (failures ÷ requests)
+instead: it stays readable when traffic changes.
+
+## Every chart must have
+
+- A **title** (h3) that names the measure, and a **summary** sentence that states the takeaway,
+  e.g. "Failures peaked on 02 Nov at 61." The summary is the figure caption.
+- The **unit and time zone** in `context`, e.g. "Requests per 30 minutes · times in UTC".
+- **View data** (built in) with the same numbers.
+- **Keyboard access** (built in): Tab to the plot, Left/Right move between periods, Home/End jump,
+  Escape hides the values. Each move announces the period and every visible series together.
+- **States**: `loading`, `empty` (say why: "No requests in the last 7 days"), `error` with Try again.
+- Colour is never the only signal: failures are dashed, legend items are toggles with text, and
+  deltas say "Up" or "Down".
+
+## Formatting
+
+- Dates as **DD MMM YYYY** (`xType="date"`): "03 Nov" on the axis, "03 Nov 2026" in the tooltip
+  and table.
+- Numbers through `yFormat` (`Intl.NumberFormat` options); the axis uses compact notation (2.4K),
+  the tooltip and table the full value (2,380).
+- Money with its currency code: `{ style: 'currency', currency: 'SGD' }`.

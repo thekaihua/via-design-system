@@ -1,0 +1,128 @@
+/* Shared field anatomy: label row, description, control, error (Field / * masters). */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  font-family: var(--via-font-ui);
+}
+
+.labelRow {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.label {
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+  line-height: var(--via-type-body-line);
+}
+
+.sm .label {
+  font-size: var(--via-type-metadata);
+}
+
+.optional,
+.description {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+}
+
+.optional {
+  font-size: 12px;
+}
+
+.error {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  color: var(--via-semantic-error-foreground);
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+}
+
+.error svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+/* The bordered box that holds the input (Control frame). */
+.control {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-small);
+  min-height: 40px;
+  padding: 0 var(--via-space-control);
+  border: 1px solid var(--via-semantic-border-control);
+  border-radius: var(--via-radius-field);
+  background: var(--via-semantic-surface-default);
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-body-line);
+  transition:
+    border-color var(--via-motion-feedback) var(--via-motion-easing),
+    background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.sm .control {
+  min-height: 32px;
+  padding: 0 10px;
+  font-size: var(--via-type-metadata);
+}
+
+.control[data-hovered] {
+  border-color: var(--via-semantic-border-control-hover);
+}
+
+/* Inputs show the ring for any focus; buttons (Select trigger) only for keyboard focus. */
+.control:has(input:focus, textarea:focus),
+.control[data-focus-visible] {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: var(--via-focus-gap);
+}
+
+.control[data-invalid],
+.field[data-invalid] .control {
+  border-color: var(--via-semantic-error-foreground);
+}
+
+.control[data-disabled],
+.field[data-disabled] .control {
+  border-color: var(--via-semantic-disabled-background);
+  background: var(--via-semantic-disabled-background);
+  color: var(--via-semantic-disabled-foreground);
+  cursor: not-allowed;
+}
+
+.readOnly .control {
+  background: var(--via-semantic-surface-subtle);
+}
+
+.trailingIcon {
+  flex: none;
+  color: var(--via-semantic-text-secondary);
+}
+
+/* Inputs inside the control carry no chrome of their own. */
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.input::placeholder {
+  color: var(--via-semantic-text-secondary);
+  opacity: 1;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}

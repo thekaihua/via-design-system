@@ -1,0 +1,165 @@
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--via-space-small);
+  font-family: var(--via-font-ui);
+}
+
+.search {
+  flex: 0 1 300px;
+}
+
+.actions {
+  display: flex;
+  gap: var(--via-space-small);
+  margin-left: auto;
+}
+
+/* 28 px pill (Chip / Filter); hit area extended to 44 px. */
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  border: 1px solid var(--via-semantic-border-control);
+  border-radius: var(--via-radius-control);
+  background: var(--via-semantic-surface-default);
+  transition: background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.chip:has([data-hovered]) {
+  background: var(--via-semantic-surface-hover);
+}
+
+.applied,
+.applied:has([data-hovered]) {
+  border-color: var(--via-semantic-navigation-active-foreground);
+  background: var(--via-semantic-navigation-active-background);
+}
+
+.select {
+  display: contents;
+}
+
+.trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--via-space-micro);
+  height: 100%;
+  padding: 0 10px 0 var(--via-space-small);
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-primary);
+  font: inherit;
+  font-size: var(--via-type-metadata);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.trigger::before {
+  content: '';
+  position: absolute;
+  inset: -8px 0;
+}
+
+.applied .trigger {
+  padding: 0 4px 0 10px;
+}
+
+.addIcon {
+  color: var(--via-semantic-text-secondary);
+}
+
+.value {
+  color: var(--via-semantic-navigation-active-foreground);
+  font-weight: 700;
+}
+
+.remove {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--via-semantic-navigation-active-foreground);
+  cursor: pointer;
+}
+
+.remove::before {
+  content: '';
+  position: absolute;
+  inset: -12px -6px;
+}
+
+.remove[data-hovered] {
+  background: var(--via-semantic-surface-default);
+}
+
+.clearAll {
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--via-semantic-text-link);
+  font: inherit;
+  font-size: var(--via-type-label);
+  cursor: pointer;
+}
+
+.clearAll[data-hovered] {
+  color: var(--via-semantic-action-hover);
+  text-decoration: underline;
+}
+
+.popover {
+  min-width: 200px;
+  max-height: 320px;
+  overflow: auto;
+  padding: var(--via-space-micro);
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-raised);
+  box-shadow: 0 8px var(--via-elevation-dialog) rgb(0 0 0 / 0.12);
+  z-index: var(--via-layer-dropdown);
+}
+
+.listbox {
+  outline: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-small);
+  min-height: 40px;
+  padding: 0 var(--via-space-control);
+  border-radius: var(--via-radius-inner);
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-ui);
+  font-size: var(--via-type-label);
+  cursor: pointer;
+  outline: none;
+}
+
+.option[data-focused],
+.option[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.option[data-selected] {
+  font-weight: 700;
+}
+
+.optionLabel {
+  flex: 1;
+}

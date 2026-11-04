@@ -1,0 +1,133 @@
+.overlay {
+  justify-content: flex-end;
+}
+
+/* Width: via.size.focus-view (480 px, matches the masters); full screen under 768 px. */
+.panel {
+  display: flex;
+  width: var(--via-size-focus-view);
+  max-width: 100%;
+  height: 100dvh;
+  background: var(--via-semantic-surface-raised);
+  box-shadow: -8px 0 32px rgb(16 24 40 / 0.18);
+  outline: none;
+}
+
+.panel[data-entering] {
+  animation: slide var(--via-motion-overlay-enter) var(--via-motion-easing-emphasised);
+}
+
+.panel[data-exiting] {
+  animation: slide var(--via-motion-overlay-exit) var(--via-motion-easing-exit) reverse;
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes slide {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .panel {
+    width: 100%;
+  }
+}
+
+.dialog {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  outline: none;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--via-space-control);
+  padding: 20px var(--via-space-field) var(--via-space-field) var(--via-space-3);
+  border-bottom: 1px solid var(--via-semantic-border-decorative);
+}
+
+.heading {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--via-space-micro);
+  min-width: 0;
+  padding-top: 8px;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.description {
+  margin: 0;
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  padding: var(--via-space-3);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-small);
+  padding: var(--via-space-control) var(--via-space-3);
+  border-top: 1px solid var(--via-semantic-border-decorative);
+}
+
+.actions {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.progress {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.stepLabel {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  font-weight: 700;
+  line-height: var(--via-type-body-line);
+}
+
+.segments {
+  display: flex;
+  gap: var(--via-space-micro);
+}
+
+.segment {
+  width: 32px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--via-semantic-border-decorative);
+}
+
+.segmentDone {
+  background: var(--via-semantic-action-background);
+}

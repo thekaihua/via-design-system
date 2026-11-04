@@ -1,0 +1,121 @@
+/* Bottom-left stack above everything (layer.toast). */
+.region {
+  position: fixed;
+  bottom: var(--via-space-3);
+  left: var(--via-space-3);
+  z-index: var(--via-layer-toast);
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--via-space-small);
+  width: min(580px, calc(100vw - 2 * var(--via-space-field)));
+  outline: none;
+}
+
+.region[data-focus-visible] {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: var(--via-focus-gap);
+  border-radius: var(--via-radius-panel);
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-control);
+  padding: 2px var(--via-space-small) 2px var(--via-space-field);
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-raised);
+  box-shadow: 0 8px var(--via-elevation-dialog) rgb(16 24 40 / 0.14);
+  font-family: var(--via-font-ui);
+  outline: none;
+  animation: rise var(--via-motion-transition) var(--via-motion-easing);
+}
+
+.toast[data-focus-visible] {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: var(--via-focus-gap);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation-name: fadeOnly;
+  }
+}
+
+@keyframes fadeOnly {
+  from {
+    opacity: 0;
+  }
+}
+
+.icon {
+  flex: none;
+}
+
+.success {
+  color: var(--via-semantic-success-foreground);
+}
+
+.info {
+  color: var(--via-semantic-info-foreground);
+}
+
+.error {
+  color: var(--via-semantic-error-foreground);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 0;
+}
+
+.message {
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-body-line);
+}
+
+.action {
+  flex: none;
+  min-height: 44px;
+  padding: 0 var(--via-space-small);
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-link);
+  font: inherit;
+  font-size: var(--via-type-label);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.action[data-hovered] {
+  text-decoration: underline;
+}
+
+.close {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-primary);
+  cursor: pointer;
+}
+
+.close[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}

@@ -1,0 +1,142 @@
+/* Shared by Checkbox and Radio (Control / Checkbox, Control / Radio). */
+.root {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--via-font-ui);
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--via-space-control);
+  padding: var(--via-space-control) 0;
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-body-line);
+  cursor: pointer;
+}
+
+.indicator {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.5px;
+  border: 1px solid var(--via-semantic-border-control);
+  border-radius: 4px;
+  background: var(--via-semantic-surface-default);
+  color: var(--via-semantic-action-foreground);
+  transition:
+    background-color var(--via-motion-feedback) var(--via-motion-easing),
+    border-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.checkbox[data-hovered] .indicator {
+  border-color: var(--via-semantic-border-control-hover);
+  background: var(--via-semantic-surface-hover);
+}
+
+.checkbox[data-selected] .indicator,
+.checkbox[data-indeterminate] .indicator {
+  border-color: var(--via-semantic-action-background);
+  background: var(--via-semantic-action-background);
+}
+
+.checkbox[data-selected][data-hovered] .indicator,
+.checkbox[data-indeterminate][data-hovered] .indicator {
+  border-color: var(--via-semantic-action-hover);
+  background: var(--via-semantic-action-hover);
+}
+
+.checkbox[data-focus-visible] .indicator {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: var(--via-focus-gap);
+}
+
+.checkbox[data-invalid] .indicator {
+  border-color: var(--via-semantic-error-foreground);
+}
+
+.checkbox[data-disabled] {
+  color: var(--via-semantic-disabled-foreground);
+  cursor: not-allowed;
+}
+
+.checkbox[data-disabled] .indicator {
+  border-color: var(--via-semantic-disabled-background);
+  background: var(--via-semantic-disabled-background);
+  color: var(--via-semantic-disabled-foreground);
+}
+
+.label {
+  min-width: 0;
+}
+
+/* Label hidden: a 44 px square hit area around the indicator (Table / Selection cell). */
+.compact {
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  align-items: center;
+}
+
+.compact .indicator {
+  margin-top: 0;
+}
+
+.description,
+.error {
+  margin: -8px 0 var(--via-space-small) 32px;
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+}
+
+.description {
+  color: var(--via-semantic-text-secondary);
+}
+
+.error {
+  display: flex;
+  gap: 6px;
+  color: var(--via-semantic-error-foreground);
+}
+
+.error svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+/* Radio indicator: circle with a 10 px dot. */
+.radio .indicator {
+  border-radius: 50%;
+}
+
+.radio[data-selected] .indicator {
+  border-color: var(--via-semantic-action-background);
+  background: var(--via-semantic-surface-default);
+  box-shadow: inset 0 0 0 1px var(--via-semantic-action-background);
+}
+
+.radio[data-selected][data-hovered] .indicator {
+  border-color: var(--via-semantic-action-hover);
+  background: var(--via-semantic-surface-hover);
+  box-shadow: inset 0 0 0 1px var(--via-semantic-action-hover);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--via-semantic-action-background);
+}
+
+.radio[data-selected][data-hovered] .dot {
+  background: var(--via-semantic-action-hover);
+}
+
+.radio[data-disabled] .dot {
+  background: var(--via-semantic-disabled-foreground);
+}

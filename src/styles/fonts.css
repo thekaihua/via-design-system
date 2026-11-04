@@ -1,0 +1,11 @@
+/*
+ * Self-hosted webfonts (SIL Open Font License), bundled from npm by Vite.
+ * Family names match the via.font.* tokens. Only the weights the design uses
+ * are loaded: Nunito 400/700 (+ 400 italic), Roboto Slab 400, JetBrains Mono 400.
+ * Locale fonts (Noto Sans SC/JP/KR/Arabic) are fallbacks and are not bundled.
+ */
+@import '@fontsource/nunito/400.css';
+@import '@fontsource/nunito/400-italic.css';
+@import '@fontsource/nunito/700.css';
+@import '@fontsource/roboto-slab/400.css';
+@import '@fontsource/jetbrains-mono/400.css';

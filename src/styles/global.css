@@ -1,0 +1,8 @@
+/*
+ * Global entry point: fonts, generated tokens and base element styles.
+ * Components import nothing global; apps import this file once (or, from the package,
+ * 'via-design-system/fonts.css' and 'via-design-system/styles.css').
+ */
+@import './fonts.css';
+@import '../tokens/tokens.css';
+@import './base.css';

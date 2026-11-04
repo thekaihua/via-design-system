@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "allowImportingTsExtensions": false,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.lib.tsbuildinfo"
+  },
+  "include": ["src/lib.ts", "src/index.ts", "src/vite-env.d.ts"],
+  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.ts", "src/docs", "src/patterns", "src/screens", "src/examples", "src/parity", "src/setup", "src/test"]
+}

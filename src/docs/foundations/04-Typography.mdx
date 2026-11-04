@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FontFamilies, TypeScale, TokenTable } from './TokenDocs';
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+**Nunito** (400, 700) for UI and reading text, **Roboto Slab** (400) for headings
+18 px and up, **JetBrains Mono** for code. All three are open-source (SIL OFL) and
+bundled from npm, so nothing loads from a third-party CDN. Headings stay at
+Regular: no bold slab.
+
+## Families
+
+<FontFamilies />
+
+Chinese, Japanese, Korean and Arabic fall back to the `via.font.locale.*` Noto
+families, which the app loads only for those locales.
+
+## Scale
+
+<TypeScale />
+
+## Line height and tracking
+
+<TokenTable prefix="via.type." exclude={['via.type.display', 'via.type.title', 'via.type.body', 'via.type.support', 'via.type.label', 'via.type.mobile-heading', 'via.type.form-title', 'via.type.metadata']} />
+
+Line heights: 1.5 for reading text, 1.43 for 14 px labels. Display uses 0.5 px tracking; UI text uses the font's native spacing.

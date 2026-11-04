@@ -1,0 +1,18 @@
+/* Textarea control: 16 px padding, grows with rows. Radius stays the field radius. */
+.control {
+  align-items: stretch;
+  padding: var(--via-space-control) var(--via-space-field);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 3lh;
+}
+
+.count {
+  align-self: flex-end;
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+  font-variant-numeric: tabular-nums;
+}

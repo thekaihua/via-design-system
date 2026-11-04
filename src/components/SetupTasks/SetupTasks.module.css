@@ -1,0 +1,131 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-control);
+  padding: var(--via-space-3);
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-raised);
+  font-family: var(--via-font-ui);
+}
+
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--via-space-control);
+}
+
+.title {
+  flex: 1;
+  margin: 0;
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: var(--via-type-tracking-display);
+}
+
+.count {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  font-weight: 700;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--via-space-control);
+  padding: 14px var(--via-space-field);
+  border-radius: var(--via-radius-inner);
+  color: inherit;
+  text-decoration: none;
+  transition: background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+a.row {
+  cursor: pointer;
+}
+
+a.row[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+a.row[data-hovered] .taskTitle {
+  color: var(--via-semantic-text-link);
+  text-decoration: underline;
+}
+
+.icon {
+  flex: none;
+  margin-top: 1px;
+  color: var(--via-semantic-border-control);
+}
+
+.text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.taskTitle {
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+  line-height: var(--via-type-body-line);
+}
+
+.description,
+.status {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+}
+
+.status {
+  flex: none;
+}
+
+.current .row {
+  background: var(--via-semantic-navigation-active-background);
+}
+
+.current .icon {
+  color: var(--via-semantic-action-background);
+}
+
+/* The master uses action.background for this text, which is 4.4:1 on the highlight; use the active-nav colour. */
+.current .status {
+  color: var(--via-semantic-navigation-active-foreground);
+}
+
+.done .icon,
+.done .status {
+  color: var(--via-semantic-success-foreground);
+}
+
+.attention .icon,
+.attention .status {
+  color: var(--via-semantic-warning-foreground);
+}
+
+@media (max-width: 767px) {
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .status {
+    flex-basis: 100%;
+    padding-left: 32px;
+  }
+}

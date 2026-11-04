@@ -1,0 +1,102 @@
+.block {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-subtle);
+  font-family: var(--via-font-ui);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 4px 0 var(--via-space-field);
+  border-bottom: 1px solid var(--via-semantic-border-decorative);
+}
+
+.language {
+  color: var(--via-semantic-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pre {
+  margin: 0;
+  padding: var(--via-space-control) 0;
+  overflow-x: auto;
+  outline: none;
+}
+
+.pre:focus-visible {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: calc(-1 * var(--via-focus-width));
+}
+
+.code {
+  display: block;
+  min-width: max-content;
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-mono);
+  font-size: var(--via-type-metadata);
+  line-height: 1.6;
+}
+
+.line {
+  display: flex;
+  gap: var(--via-space-field);
+  padding: 0 var(--via-space-field);
+  white-space: pre;
+}
+
+.number {
+  flex: none;
+  width: 2ch;
+  color: var(--via-semantic-text-secondary);
+  text-align: right;
+  user-select: none;
+}
+
+/* Copyable value */
+.copyable {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--via-font-ui);
+}
+
+.valueLabel {
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+  line-height: var(--via-type-body-line);
+}
+
+.valueControl {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-micro);
+  min-height: 40px;
+  padding: 0 4px 0 var(--via-space-control);
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-field);
+  background: var(--via-semantic-surface-subtle);
+}
+
+.value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-mono);
+  font-size: var(--via-type-metadata);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.valueDescription {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+}

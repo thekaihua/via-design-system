@@ -1,0 +1,140 @@
+/*
+ * Button / {Primary, Secondary, Destructive, Gradient} / {Small, Medium, Large}
+ * The <button> is the visible pill, so the focus ring follows it. The 44/48 px
+ * touch target is an invisible ::before that extends above and below.
+ */
+.button {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--via-space-small);
+  height: 32px;
+  padding: 0 var(--via-space-control);
+  border: 1px solid transparent;
+  border-radius: var(--via-radius-control);
+  font-family: var(--via-font-ui);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+  line-height: var(--via-type-label-line);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--via-motion-feedback) var(--via-motion-easing),
+    border-color var(--via-motion-feedback) var(--via-motion-easing),
+    color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: calc((32px - var(--via-size-touch-min)) / 2) 0;
+}
+
+.sm {
+  height: 28px;
+  padding: 0 10px;
+  font-size: var(--via-type-metadata);
+}
+
+.sm::before {
+  inset: calc((28px - var(--via-size-touch-min)) / 2) 0;
+}
+
+.lg {
+  height: 40px;
+  padding: 0 16px;
+  font-size: var(--via-type-body);
+}
+
+.lg::before {
+  inset: calc((40px - var(--via-size-touch)) / 2) 0;
+}
+
+.icon {
+  flex: none;
+  width: var(--via-icon-control);
+  height: var(--via-icon-control);
+}
+
+.sm .icon {
+  width: var(--via-icon-compact);
+  height: var(--via-icon-compact);
+}
+
+/* Primary */
+.primary {
+  background: var(--via-semantic-action-background);
+  color: var(--via-semantic-action-foreground);
+}
+
+.primary[data-hovered] {
+  background: var(--via-semantic-action-hover);
+}
+
+.primary[data-pressed] {
+  background: var(--via-semantic-action-pressed);
+}
+
+/* Secondary */
+.secondary {
+  border-color: var(--via-semantic-border-control);
+  background: var(--via-semantic-surface-default);
+  color: var(--via-semantic-text-primary);
+}
+
+.secondary[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.secondary[data-pressed] {
+  background: var(--via-semantic-surface-pressed);
+}
+
+/* Destructive */
+.destructive {
+  background: var(--via-semantic-destructive-background);
+  color: var(--via-semantic-destructive-foreground);
+}
+
+.destructive[data-hovered] {
+  background: var(--via-semantic-destructive-hover);
+}
+
+.destructive[data-pressed] {
+  background: var(--via-semantic-destructive-pressed);
+}
+
+/*
+ * Gradient (marketing and hero CTAs only). The gradient colours aren't themed,
+ * so the label stays white in both themes; the themed action.foreground is dark
+ * in dark mode and would fail contrast on this background.
+ */
+.gradient {
+  background: linear-gradient(90deg, var(--via-color-gradient-start), var(--via-color-primary));
+  color: var(--via-color-white);
+}
+
+.gradient[data-hovered],
+.gradient[data-pressed] {
+  background: linear-gradient(90deg, var(--via-color-gradient-start-hover), var(--via-color-brand));
+}
+
+/* Disabled stays focusable (aria-disabled) so a reason tooltip can be read. */
+.button[aria-disabled='true']:not([data-pending]) {
+  border-color: transparent;
+  background: var(--via-semantic-disabled-background);
+  color: var(--via-semantic-disabled-foreground);
+  cursor: not-allowed;
+}
+
+.button[data-pending] {
+  cursor: progress;
+}
+
+.fullWidth {
+  width: 100%;
+}

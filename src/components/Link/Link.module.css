@@ -1,0 +1,56 @@
+/* Action / Text link and Action / App link. */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--via-space-micro);
+  border-radius: 2px;
+  color: var(--via-semantic-text-link);
+  font-family: var(--via-font-ui);
+  font-size: var(--via-type-label);
+  font-weight: 400;
+  line-height: var(--via-type-label-line);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.lg {
+  font-size: var(--via-type-body);
+  line-height: var(--via-type-body-line);
+}
+
+/* Links inside running text are always underlined so they don't rely on colour alone. */
+.inline {
+  display: inline;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+}
+
+.link[data-hovered] {
+  color: var(--via-semantic-action-hover);
+  text-decoration: underline;
+}
+
+.link[data-pressed] {
+  color: var(--via-semantic-action-pressed);
+}
+
+.link[data-disabled] {
+  color: var(--via-semantic-disabled-foreground);
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
+.external {
+  flex: none;
+  width: var(--via-icon-compact);
+  height: var(--via-icon-compact);
+}
+
+.inline .external {
+  display: inline;
+  vertical-align: -2px;
+  margin-left: 2px;
+}

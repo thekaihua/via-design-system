@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# via design system
+
+Accessible React components for dashboards and admin tools: forms, data tables, charts, an app shell,
+overlays and feedback, in light and dark themes.
+
+## Install
+
+```sh
+npm install via-design-system react react-dom
+```
+
+```tsx
+import 'via-design-system/fonts.css';
+import 'via-design-system/styles.css';
+import { Button, TextField } from 'via-design-system';
+```
+
+Set `data-theme="dark"` on `<html>` for the dark theme. Every style is a `--via-…` custom property, so you
+can rebrand by overriding tokens after the stylesheet. See **Foundations → Tokens**.
+
+## Using this Storybook
+
+- **Theme** (toolbar): switches between light and dark.
+- **Accessibility** panel: axe runs on every story; violations fail the test suite.
+- **Interactions**: stories with `play` functions are tests of keyboard and pointer behaviour.
+- **Foundations**: tokens, colour, contrast, typography, spacing, focus, motion and layout.
+- **Patterns** and **Screens**: how the components combine into real pages, with the copy and recovery
+  paths they need.
+- **Examples / Responsive and accessibility**: 320 px reflow, 200% zoom and text-spacing checks.
+
+## Building blocks
+
+Interactive behaviour comes from [React Aria Components](https://react-spectrum.adobe.com/react-aria/)
+(keyboard, focus and screen-reader support). Styles are CSS Modules using the tokens only. Icons are
+[Lucide](https://lucide.dev). Charts use [Recharts](https://recharts.org).

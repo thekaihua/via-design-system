@@ -1,0 +1,94 @@
+.full,
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--via-space-small);
+  font-family: var(--via-font-ui);
+}
+
+.compact {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--via-space-small);
+  max-width: 400px;
+  font-family: var(--via-font-ui);
+}
+
+.compact .count {
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+  text-align: center;
+}
+
+.compactActions {
+  display: flex;
+  gap: var(--via-space-small);
+}
+
+/* Page controls use regular weight (Navigation / Pagination). */
+.pageButton {
+  font-weight: 400;
+}
+
+.nextButton > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pages {
+  display: flex;
+  gap: var(--via-space-micro);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 44 px pill per page (Navigation / Pagination). */
+.page {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 var(--via-space-control);
+  border: 1px solid var(--via-semantic-border-control);
+  border-radius: var(--via-radius-control);
+  background: var(--via-semantic-surface-default);
+  color: var(--via-semantic-text-primary);
+  font: inherit;
+  font-size: var(--via-type-label);
+  cursor: pointer;
+  transition: background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.page[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.page[data-pressed] {
+  background: var(--via-semantic-surface-pressed);
+}
+
+.current,
+.current[data-hovered] {
+  border-color: var(--via-semantic-action-background);
+  background: var(--via-semantic-action-background);
+  color: var(--via-semantic-action-foreground);
+  font-weight: 700;
+  cursor: default;
+}
+
+.gap {
+  display: inline-flex;
+  align-items: center;
+  min-width: 24px;
+  justify-content: center;
+  color: var(--via-semantic-text-secondary);
+}
+
+.count {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  white-space: nowrap;
+}

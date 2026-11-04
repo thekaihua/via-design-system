@@ -1,0 +1,112 @@
+.banner {
+  display: flex;
+  gap: var(--via-space-control);
+  padding: 14px var(--via-space-control) 14px var(--via-space-field);
+  border: 1px solid;
+  border-radius: var(--via-radius-panel);
+  font-family: var(--via-font-ui);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-body-line);
+}
+
+.default {
+  border-color: var(--via-semantic-info-border);
+  background: var(--via-semantic-info-background);
+}
+
+.default .icon {
+  color: var(--via-semantic-info-foreground);
+}
+
+.caution {
+  border-color: var(--via-semantic-warning-border);
+  background: var(--via-semantic-warning-background);
+}
+
+.caution .icon {
+  color: var(--via-semantic-warning-foreground);
+}
+
+.critical {
+  border-color: var(--via-semantic-error-border);
+  background: var(--via-semantic-error-background);
+}
+
+.critical .icon {
+  color: var(--via-semantic-error-foreground);
+}
+
+.icon {
+  flex: none;
+  width: var(--via-icon-control);
+  height: var(--via-icon-control);
+  margin-top: 1px;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  margin: 0;
+  color: var(--via-semantic-text-primary);
+  font-weight: 700;
+}
+
+.description {
+  color: var(--via-semantic-text-secondary);
+}
+
+.description p {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--via-space-small);
+}
+
+/* 32 px visual, 44 px touch target. */
+.dismiss {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: -6px -4px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.dismiss::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
+
+.dismiss[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+  color: var(--via-semantic-text-primary);
+}
+
+.dismiss[data-pressed] {
+  background: var(--via-semantic-surface-pressed);
+}

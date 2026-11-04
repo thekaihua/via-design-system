@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--via-space-control);
+  padding: 20px;
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-default);
+  font-family: var(--via-font-ui);
+}
+
+.name {
+  margin: 0;
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-body);
+  font-weight: 700;
+}
+
+.meta {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-label);
+  font-variant-numeric: tabular-nums;
+}

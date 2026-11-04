@@ -1,0 +1,42 @@
+.spinner {
+  display: inline-flex;
+  flex: none;
+  color: var(--via-semantic-action-background);
+}
+
+.svg {
+  display: block;
+  animation: spin 800ms linear infinite;
+}
+
+.track {
+  stroke: var(--via-semantic-border-decorative);
+}
+
+.arc {
+  stroke: currentColor;
+  stroke-linecap: round;
+}
+
+/* Inside a button the spinner takes the label colour. */
+.inherit {
+  color: inherit;
+}
+
+.inherit .track {
+  stroke: currentColor;
+  opacity: 0.3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep a slow rotation: the movement itself signals progress. */
+  .svg {
+    animation-duration: 2400ms;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

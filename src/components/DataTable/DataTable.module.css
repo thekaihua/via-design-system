@@ -1,0 +1,244 @@
+.container {
+  overflow: hidden;
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-default);
+  font-family: var(--via-font-ui);
+}
+
+.scroll {
+  overflow-x: auto;
+  border-radius: inherit;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.head {
+  background: var(--via-semantic-surface-subtle);
+}
+
+.headerCell {
+  height: 44px;
+  padding: 0 var(--via-space-field);
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  font-weight: 700;
+  line-height: var(--via-type-label-line);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.headerCell + .headerCell,
+.selectCell + .headerCell {
+  padding-left: 0;
+}
+
+.end {
+  text-align: right;
+}
+
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  margin: 0 -6px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: var(--via-radius-inner);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.end .sortButton {
+  flex-direction: row-reverse;
+}
+
+.sortButton[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+  color: var(--via-semantic-text-primary);
+}
+
+.sortIcon {
+  flex: none;
+  opacity: 0;
+}
+
+.sortButton[data-hovered] .sortIcon,
+.sortButton[data-focus-visible] .sortIcon,
+.sorted .sortIcon {
+  opacity: 1;
+}
+
+.sorted {
+  color: var(--via-semantic-text-primary);
+}
+
+.row {
+  border-top: 1px solid var(--via-semantic-border-decorative);
+  transition: background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.row:hover {
+  background: var(--via-semantic-surface-hover);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.selected,
+.selected:hover {
+  background: var(--via-semantic-surface-selected);
+}
+
+.cell {
+  height: 52px;
+  padding: 4px var(--via-space-field);
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-body-line);
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.cell + .cell,
+.selectCell + .cell {
+  padding-left: 0;
+}
+
+.numeric {
+  font-family: var(--via-font-mono);
+  font-size: var(--via-type-metadata);
+  font-variant-numeric: tabular-nums;
+}
+
+.primary {
+  display: block;
+}
+
+.secondary {
+  display: block;
+  margin-top: 2px;
+  color: var(--via-semantic-text-secondary);
+  font-family: var(--via-font-ui);
+  font-size: 12px;
+}
+
+.selectCell {
+  width: 60px;
+  padding: 0 0 0 var(--via-space-control);
+  vertical-align: middle;
+}
+
+/* The first-column button reads as text; the row hover shows it's clickable. */
+.rowButton {
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--via-semantic-text-primary);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.row:hover .rowButton {
+  color: var(--via-semantic-text-link);
+  text-decoration: underline;
+}
+
+.skeleton {
+  display: block;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--via-semantic-border-decorative);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+.stateRow {
+  border-top: 1px solid var(--via-semantic-border-decorative);
+}
+
+.stateCell {
+  padding: var(--via-space-field);
+}
+
+.bulk {
+  border-bottom: 1px solid var(--via-semantic-border-decorative);
+}
+
+/* Under 768 px each row becomes a card: header labels move next to their values. */
+@media (max-width: 767px) {
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table colgroup,
+  .head {
+    display: none;
+  }
+
+  .row {
+    position: relative;
+    padding: var(--via-space-control) var(--via-space-field);
+  }
+
+  .cell,
+  .cell + .cell {
+    display: grid;
+    grid-template-columns: minmax(96px, 40%) 1fr;
+    gap: var(--via-space-small);
+    height: auto;
+    padding: 4px 0;
+    text-align: left;
+  }
+
+  .cell::before {
+    content: attr(data-label);
+    color: var(--via-semantic-text-secondary);
+    font-family: var(--via-font-ui);
+    font-size: var(--via-type-metadata);
+  }
+
+  /* The first column is the card title. */
+  .row > .cell:first-of-type {
+    display: block;
+    font-weight: 700;
+  }
+
+  .row > .cell:first-of-type::before {
+    content: none;
+  }
+
+  .selectCell {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: auto;
+    padding: 0;
+  }
+}

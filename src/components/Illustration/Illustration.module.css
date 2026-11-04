@@ -1,0 +1,137 @@
+/* Every fill and stroke is a token, so the art follows the theme. */
+.illustration {
+  --ill-accent: var(--via-semantic-action-background);
+  --ill-line: var(--via-semantic-border-decorative);
+  display: block;
+  flex: none;
+  max-width: 100%;
+  height: auto;
+}
+
+.card {
+  fill: var(--via-semantic-surface-raised);
+  stroke: var(--ill-line);
+  stroke-width: 2;
+}
+
+.panel {
+  fill: var(--via-semantic-surface-subtle);
+}
+
+.ground {
+  fill: var(--ill-line);
+  opacity: 0.6;
+}
+
+.tint,
+.tray {
+  fill: color-mix(in srgb, var(--ill-accent) 14%, transparent);
+}
+
+.tray {
+  stroke: var(--ill-accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.line {
+  fill: var(--ill-line);
+}
+
+.lineFaint {
+  fill: var(--ill-line);
+  opacity: 0.6;
+}
+
+.metric {
+  fill: color-mix(in srgb, var(--ill-accent) 30%, transparent);
+}
+
+.stroke {
+  fill: none;
+  stroke: var(--ill-accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The route: the same idea as the logo, a path through waypoints. */
+.route {
+  fill: none;
+  stroke: var(--via-chart-series-2);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 2 8;
+}
+
+.nodeOpen {
+  fill: var(--via-semantic-surface-raised);
+  stroke: var(--via-chart-series-2);
+  stroke-width: 2.5;
+}
+
+.nodeAccent {
+  fill: var(--ill-accent);
+}
+
+.accentSoft {
+  fill: color-mix(in srgb, var(--ill-accent) 18%, transparent);
+}
+
+.lens {
+  fill: color-mix(in srgb, var(--ill-accent) 10%, var(--via-semantic-surface-raised));
+  stroke: var(--ill-accent);
+  stroke-width: 4;
+}
+
+.handle {
+  fill: none;
+  stroke: var(--ill-accent);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+.errorMark {
+  fill: none;
+  stroke: var(--via-semantic-error-foreground);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.successSoft {
+  fill: color-mix(in srgb, var(--via-semantic-success-foreground) 14%, transparent);
+}
+
+.successRing {
+  fill: var(--via-semantic-surface-raised);
+  stroke: var(--via-semantic-success-foreground);
+  stroke-width: 3;
+}
+
+.successMark {
+  fill: none;
+  stroke: var(--via-semantic-success-foreground);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart {
+  fill: none;
+  stroke: var(--ill-accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chartTint {
+  fill: color-mix(in srgb, var(--ill-accent) 12%, transparent);
+}
+
+.lockBody {
+  fill: var(--ill-accent);
+}
+
+.errorSoft {
+  fill: color-mix(in srgb, var(--via-semantic-error-foreground) 14%, transparent);
+}

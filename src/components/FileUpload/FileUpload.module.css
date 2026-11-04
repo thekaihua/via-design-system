@@ -1,0 +1,196 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-small);
+  font-family: var(--via-font-ui);
+}
+
+.label {
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+}
+
+/* Upload control: 20 px padding, field radius, dashed edge while dragging. */
+.zone {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--via-space-field);
+  padding: 20px;
+  border: 1px solid var(--via-semantic-border-control);
+  border-radius: var(--via-radius-field);
+  background: var(--via-semantic-surface-default);
+  outline: none;
+  transition:
+    background-color var(--via-motion-feedback) var(--via-motion-easing),
+    border-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+.zone[data-drop-target] {
+  border-style: dashed;
+  border-color: var(--via-semantic-action-background);
+  background: var(--via-semantic-surface-selected);
+}
+
+.zone[data-focus-visible] {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: var(--via-focus-gap);
+}
+
+.zoneInvalid {
+  border-color: var(--via-semantic-error-foreground);
+}
+
+.icon {
+  flex: none;
+  color: var(--via-semantic-text-link);
+}
+
+.instruction {
+  flex: 1 1 240px;
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-body-line);
+}
+
+.description {
+  margin: 0;
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-body-line);
+}
+
+.description:empty {
+  display: none;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.error {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  color: var(--via-semantic-error-foreground);
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+}
+
+.error svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-small);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-control);
+  padding: var(--via-space-control) var(--via-space-small) var(--via-space-control) var(--via-space-field);
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-inner);
+}
+
+.fileError {
+  border-color: var(--via-semantic-error-border);
+  background: var(--via-semantic-error-background);
+}
+
+.fileIcon {
+  flex: none;
+  color: var(--via-semantic-text-secondary);
+}
+
+.fileText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fileName {
+  overflow: hidden;
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileMeta {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+}
+
+.fileError .fileMeta {
+  color: var(--via-semantic-error-foreground);
+}
+
+.progress {
+  margin-top: 4px;
+}
+
+.track {
+  display: block;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--via-semantic-neutral-background);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  background: var(--via-semantic-action-background);
+  transition: width var(--via-motion-transition) var(--via-motion-easing);
+}
+
+.doneIcon {
+  flex: none;
+  color: var(--via-semantic-success-foreground);
+}
+
+.errorIcon {
+  flex: none;
+  color: var(--via-semantic-error-foreground);
+}
+
+.remove {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-secondary);
+  cursor: pointer;
+}
+
+.remove::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
+
+.remove[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+  color: var(--via-semantic-text-primary);
+}

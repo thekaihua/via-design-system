@@ -1,0 +1,60 @@
+// via design system public API. Import './styles/global.css' once in the app root.
+export { Illustration, type IllustrationName, type IllustrationProps } from './components/Illustration/Illustration';
+export { Badge, type BadgeProps, type BadgeTone } from './components/Badge/Badge';
+export { Banner, type BannerProps, type BannerType } from './components/Banner/Banner';
+export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './components/Button/Button';
+export { ButtonGroup, type ButtonGroupProps } from './components/Button/ButtonGroup';
+export { Checkbox, type CheckboxProps } from './components/Checkbox/Checkbox';
+export { Link, type LinkProps } from './components/Link/Link';
+export { PasswordField, type PasswordFieldProps } from './components/PasswordField/PasswordField';
+export { RadioGroup, type RadioGroupProps, type RadioOption } from './components/RadioGroup/RadioGroup';
+export { Select, type SelectOption, type SelectProps } from './components/Select/Select';
+export { Spinner, type SpinnerProps } from './components/Spinner/Spinner';
+export { Switch, type SwitchProps } from './components/Switch/Switch';
+export { Tabs, type TabItem, type TabsProps } from './components/Tabs/Tabs';
+export { Textarea, type TextareaProps } from './components/Textarea/Textarea';
+export { TextField, type TextFieldProps } from './components/TextField/TextField';
+export { Tooltip, type TooltipProps } from './components/Tooltip/Tooltip';
+export { breakpoints, durations, layers, token, type TokenName } from './tokens/tokens';
+export { CodeBlock, CopyableValue, type CodeBlockProps, type CopyableValueProps } from './components/CodeBlock/CodeBlock';
+export { CommandSearch, useCommandSearchShortcut, type CommandSearchGroup, type CommandSearchItem, type CommandSearchProps } from './components/CommandSearch/CommandSearch';
+export { CopyButton, type CopyButtonProps } from './components/CopyButton/CopyButton';
+export { DataTable, type DataTableColumn, type DataTableProps, type SortDirection, type SortState } from './components/DataTable/DataTable';
+export { BulkActionBar, TableFooter, TableToolbar, type BulkActionBarProps, type TableFooterProps, type TableToolbarProps } from './components/DataTable/TableParts';
+export { Dialog, type DialogProps } from './components/Dialog/Dialog';
+export { FilterBar, FilterChip, type FilterBarProps, type FilterChipProps, type FilterDefinition, type FilterOption } from './components/FilterBar/FilterBar';
+export { FocusView, type FocusViewProps } from './components/FocusView/FocusView';
+export { OverflowMenu, type OverflowMenuGroup, type OverflowMenuItem, type OverflowMenuProps } from './components/OverflowMenu/OverflowMenu';
+export { Pagination, type PaginationProps } from './components/Pagination/Pagination';
+export { PropertyList, type PropertyItem, type PropertyListProps } from './components/PropertyList/PropertyList';
+export { RegionState, type RegionStateKind, type RegionStateProps } from './components/RegionState/RegionState';
+export { SearchField, type SearchFieldProps } from './components/SearchField/SearchField';
+export { SetupTasks, type SetupTask, type SetupTaskStatus, type SetupTasksProps } from './components/SetupTasks/SetupTasks';
+export { Stepper, type StepperProps } from './components/Stepper/Stepper';
+export { toast, toastQueue, ToastRegion, type ToastOptions, type ToastTone } from './components/Toast/Toast';
+
+// Phase 4: app shell, advanced fields, charts
+export { AppShell, useShell, type AppShellProps } from './components/AppShell/AppShell';
+export { AppHeader, EnvironmentControl, type AccountMenuItem, type AppHeaderProps, type Environment, type EnvironmentControlProps } from './components/AppShell/AppHeader';
+export { AppSidebar, type AppSidebarProps, type Workspace } from './components/AppShell/AppSidebar';
+export { Brand, type BrandProps } from './components/AppShell/Brand';
+export { PageHeader, type PageHeaderProps } from './components/AppShell/PageHeader';
+export { NavGroup, NavList, SideNavItem, type NavItem } from './components/AppShell/SideNav';
+export { Calendar, RangeCalendar } from './components/DateField/Calendar';
+export { DateField, type DateFieldProps } from './components/DateField/DateField';
+export { DateRangePicker, type DateRangePickerProps } from './components/DateField/DateRangePicker';
+export { DATE_INPUT_LOCALE, daysIn, defaultPresets, formatDate, formatDateRange, formatDateTime, formatTime, todayIn, toCalendarDate, toISO, utcOffsetLabel, type DatePreset, type DateRange, type ISODate } from './components/DateField/dates';
+export { CurrencyField, fractionDigits, type CurrencyFieldProps } from './components/CurrencyField/CurrencyField';
+export { FileUpload, type FileRejection, type FileUploadProps, type UploadedFile } from './components/FileUpload/FileUpload';
+export { ErrorSummary, FieldGroup, FormActions, FormRow, FormSection, type ErrorSummaryItem, type ErrorSummaryProps, type FieldGroupProps, type FormSectionProps } from './components/Form/Form';
+export { Chart, type ChartProps, type ChartSeries, type ChartState } from './components/Chart/Chart';
+export { AnalyticsFilterBar, ChartPanel, Meter, Metric, MetricGroup, Sparkline, type AnalyticsFilterBarProps, type ChartPanelProps, type MeterProps, type MetricProps, type SparklineProps } from './components/Chart/Metrics';
+export { useChartColors, type ChartColors, type SeriesColor } from './components/Chart/useChartColors';
+export { useMediaQuery, usePrefersReducedMotion, useShellSize } from './utils/useMediaQuery';
+
+// Phase 5a: review, layout, disclosure, lists
+export { CheckItem, DecisionPanel, RequestedChange, ReviewStatus, type CheckItemProps, type CheckResult, type DecisionPanelProps, type RequestedChangeProps, type ReviewStage, type ReviewState, type ReviewStatusProps } from './components/Review/Review';
+export { ContentPanel, Divider, SupportingResources, type ContentPanelProps, type DividerProps, type SupportingResourcesProps } from './components/Layout/Layout';
+export { Accordion, IntegrationGuide, type AccordionItemData, type AccordionProps, type IntegrationGuideProps } from './components/Disclosure/Disclosure';
+export { ItemList, ListItem, type ListItemProps } from './components/ListItem/ListItem';
+export { ServiceSummary, type Service } from './components/ServiceSummary/ServiceSummary';

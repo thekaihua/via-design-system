@@ -1,0 +1,118 @@
+.select {
+  max-width: 100%;
+}
+
+.trigger {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Buttons only get the ring for keyboard focus (Field.module.css handles [data-focus-visible]). */
+.trigger:focus-visible {
+  outline: none;
+}
+
+.trigger[data-focus-visible] {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: var(--via-focus-gap);
+}
+
+.value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value[data-placeholder] {
+  color: var(--via-semantic-text-secondary);
+}
+
+.chevron {
+  transition: transform var(--via-motion-transition) var(--via-motion-easing);
+}
+
+.select[data-open] .chevron {
+  transform: rotate(180deg);
+}
+
+/* Menu surface: raised, panel radius, rows use the inner radius. */
+.popover {
+  min-width: var(--trigger-width);
+  max-height: 320px;
+  overflow: auto;
+  padding: var(--via-space-micro);
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-raised);
+  box-shadow: 0 8px var(--via-elevation-dialog) rgb(0 0 0 / 0.12);
+  z-index: var(--via-layer-dropdown);
+}
+
+.popover[data-entering] {
+  animation: enter var(--via-motion-overlay-enter) var(--via-motion-easing-emphasised);
+}
+
+.popover[data-exiting] {
+  animation: enter var(--via-motion-overlay-exit) var(--via-motion-easing-exit) reverse;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.listbox {
+  outline: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-small);
+  min-height: 40px;
+  padding: 0 var(--via-space-control);
+  border-radius: var(--via-radius-inner);
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-ui);
+  font-size: var(--via-type-label);
+  line-height: var(--via-type-body-line);
+  cursor: pointer;
+  outline: none;
+}
+
+.option[data-focused],
+.option[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.option[data-pressed] {
+  background: var(--via-semantic-surface-pressed);
+}
+
+.option[data-selected] {
+  font-weight: 700;
+}
+
+.option[data-focus-visible] {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: calc(-1 * var(--via-focus-width));
+}
+
+.option[data-disabled] {
+  color: var(--via-semantic-disabled-foreground);
+  cursor: not-allowed;
+}
+
+.optionLabel {
+  flex: 1;
+}
+
+.check {
+  flex: none;
+  color: var(--via-semantic-text-link);
+}

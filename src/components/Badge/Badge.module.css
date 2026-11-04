@@ -1,0 +1,49 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--via-space-micro);
+  height: 24px;
+  padding: 2px var(--via-space-small);
+  border-radius: 4px;
+  font-family: var(--via-font-ui);
+  font-size: var(--via-type-metadata);
+  font-weight: 700;
+  line-height: var(--via-type-label-line);
+  white-space: nowrap;
+}
+
+.icon {
+  flex: none;
+  width: 12px;
+  height: 12px;
+}
+
+.neutral {
+  background: var(--via-semantic-neutral-background);
+  color: var(--via-semantic-neutral-foreground);
+}
+
+.info {
+  background: var(--via-semantic-info-background);
+  color: var(--via-semantic-info-foreground);
+}
+
+.positive {
+  background: var(--via-semantic-success-background);
+  color: var(--via-semantic-success-foreground);
+}
+
+.warning {
+  background: var(--via-semantic-warning-background);
+  color: var(--via-semantic-warning-foreground);
+}
+
+.negative {
+  background: var(--via-semantic-error-background);
+  color: var(--via-semantic-error-foreground);
+}
+
+.urgent {
+  background: var(--via-semantic-destructive-background);
+  color: var(--via-semantic-destructive-foreground);
+}

@@ -1,0 +1,437 @@
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-control);
+  margin: 0;
+  min-width: 0;
+  font-family: var(--via-font-ui);
+}
+
+.header,
+.panelHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--via-space-field);
+}
+
+.title {
+  flex: 1;
+  margin: 0;
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--via-space-small);
+}
+
+.tableToggle {
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--via-semantic-text-link);
+  font: inherit;
+  font-size: var(--via-type-metadata);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tableToggle[data-hovered] {
+  text-decoration: underline;
+}
+
+.tableToggle[data-selected] {
+  color: var(--via-semantic-text-primary);
+}
+
+.plot {
+  min-width: 0;
+  border-radius: var(--via-radius-inner);
+  font-variant-numeric: tabular-nums;
+}
+
+.panelGap {
+  margin-bottom: var(--via-space-small);
+}
+
+.plot :global(.recharts-surface) {
+  overflow: visible;
+}
+
+.skeleton {
+  border-radius: var(--via-radius-inner);
+  background: linear-gradient(to top, var(--via-semantic-border-decorative) 1px, transparent 1px) 0 0 / 100% 25%;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+}
+
+.context {
+  font-size: 12px;
+}
+
+/* Chart / Data tooltip */
+.tooltip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-small);
+  min-width: 200px;
+  padding: var(--via-space-control);
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-inner);
+  background: var(--via-semantic-surface-raised);
+  box-shadow: 0 8px var(--via-elevation-dialog) rgb(16 24 40 / 0.14);
+  font-family: var(--via-font-ui);
+  font-size: var(--via-type-metadata);
+}
+
+.tooltipTitle {
+  color: var(--via-semantic-text-primary);
+  font-weight: 700;
+}
+
+.tooltipRow {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-small);
+  color: var(--via-semantic-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.tooltipLabel {
+  flex: 1;
+  color: var(--via-chart-axis);
+}
+
+.swatch {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+/* Chart / Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--via-space-small) var(--via-space-3);
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--via-space-small);
+  min-height: 32px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: var(--via-radius-inner);
+  background: transparent;
+  color: var(--via-semantic-text-primary);
+  font: inherit;
+  font-size: var(--via-type-metadata);
+  cursor: pointer;
+}
+
+.legendItem[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.legendItem:not([data-selected]) {
+  color: var(--via-semantic-text-secondary);
+  text-decoration: line-through;
+}
+
+.legendItem:not([data-selected]) .legendSwatch {
+  opacity: 0.35;
+}
+
+.legendItem[data-disabled] {
+  cursor: default;
+}
+
+.legendSwatch {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.legendDashed {
+  background: repeating-linear-gradient(90deg, currentColor 0 6px, transparent 6px 10px);
+}
+
+/* Dashboard / Metric */
+.metricGroup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--via-space-3);
+}
+
+@media (min-width: 768px) {
+  .metricGroup {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .metricGroup {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 32px;
+  }
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--via-font-ui);
+}
+
+.metricCard {
+  gap: var(--via-space-small);
+  padding: 20px;
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-default);
+}
+
+.metricLink {
+  border-radius: var(--via-radius-panel);
+  cursor: pointer;
+}
+
+.metricLink[data-hovered] .metricLabel {
+  color: var(--via-semantic-text-link);
+  text-decoration: underline;
+}
+
+.metricLabel,
+.metricContext {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  line-height: var(--via-type-body-line);
+}
+
+.metricDefinition {
+  color: var(--via-semantic-text-secondary);
+  font-size: 12px;
+}
+
+.metricRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--via-space-control);
+}
+
+.metricValues {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-micro);
+}
+
+.metricValue {
+  white-space: nowrap;
+  color: var(--via-semantic-text-primary);
+  font-size: 32px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+.metricValueCard {
+  font-size: var(--via-type-form-title);
+}
+
+.metricError {
+  color: var(--via-semantic-error-foreground);
+}
+
+.metricSkeleton {
+  display: block;
+  width: 96px;
+  height: 32px;
+  border-radius: var(--via-radius-inner);
+  background: var(--via-semantic-border-decorative);
+}
+
+.delta {
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  gap: var(--via-space-micro);
+  font-size: var(--via-type-metadata);
+  font-weight: 700;
+}
+
+.deltaGood {
+  color: var(--via-semantic-success-foreground);
+}
+
+.deltaBad {
+  color: var(--via-semantic-error-foreground);
+}
+
+.sparkline {
+  flex: none;
+  max-width: 100%;
+}
+
+/* Chart / Meter */
+.meter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--via-font-ui);
+}
+
+.meterHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--via-space-small);
+}
+
+.meterLabel {
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+}
+
+.meterValue {
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+  font-variant-numeric: tabular-nums;
+}
+
+.meterTrack {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--via-semantic-neutral-background);
+}
+
+.meterFill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  transition: width var(--via-motion-transition) var(--via-motion-easing);
+}
+
+.meter-normal {
+  background: var(--via-chart-series-1);
+}
+
+.meter-warning {
+  background: var(--via-semantic-warning-foreground);
+}
+
+.meter-critical {
+  background: var(--via-semantic-destructive-background);
+}
+
+.meterValue-warning {
+  color: var(--via-semantic-warning-foreground);
+}
+
+.meterValue-critical {
+  color: var(--via-semantic-error-foreground);
+}
+
+/* Dashboard / Chart panel */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-field);
+  padding: var(--via-space-3);
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-default);
+  font-family: var(--via-font-ui);
+}
+
+.panelTitle {
+  flex: 1;
+  margin: 0;
+  color: var(--via-semantic-text-primary);
+  font-family: var(--via-font-display);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: var(--via-type-tracking-display);
+}
+
+.panelFooter {
+  color: var(--via-semantic-text-secondary);
+  font-size: 12px;
+}
+
+@media (max-width: 767px) {
+  .panel {
+    padding: var(--via-space-field);
+  }
+}
+
+/* Analytics / Filter bar */
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--via-space-control);
+  font-family: var(--via-font-ui);
+}
+
+.filterBar > * {
+  min-width: 160px;
+}
+
+.filterContext {
+  /* Takes its own line when the row is narrow instead of shrinking to one word per line. */
+  flex: 1 1 160px;
+  align-self: center;
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+}
+
+.filterBar .filterRefresh {
+  min-width: 0;
+}
+
+.unit {
+  display: block;
+  margin-bottom: var(--via-space-small);
+  color: var(--via-chart-axis);
+  font-size: 12px;
+}
+
+.legendValue {
+  color: var(--via-semantic-text-primary);
+  font-variant-numeric: tabular-nums;
+}

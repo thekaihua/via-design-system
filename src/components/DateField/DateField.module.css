@@ -1,0 +1,336 @@
+/* ---------- Inputs (typeable date segments) ---------- */
+.control {
+  padding-right: 4px;
+}
+
+.control:has([data-focused]) {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: var(--via-focus-gap);
+}
+
+.input {
+  display: inline-flex;
+  flex: 1;
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.segment {
+  padding: 0 1px;
+  border-radius: 4px;
+  color: var(--via-semantic-text-primary);
+  outline: none;
+}
+
+.segment[data-placeholder],
+.segment[data-type='literal'] {
+  color: var(--via-semantic-text-secondary);
+}
+
+.segment[data-focused] {
+  background: var(--via-semantic-action-background);
+  color: var(--via-semantic-action-foreground);
+}
+
+.iconButton,
+.navButton {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-secondary);
+  cursor: pointer;
+}
+
+.iconButton::before,
+.navButton::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
+
+.iconButton[data-hovered],
+.navButton[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+  color: var(--via-semantic-text-primary);
+}
+
+/* ---------- Range control (Field / Date range) ---------- */
+.range {
+  width: max-content;
+  max-width: 100%;
+}
+
+.rangeControl {
+  width: max-content;
+  max-width: 100%;
+  gap: 0;
+  padding: 0 var(--via-space-control) 0 0;
+  overflow: hidden;
+}
+
+.rangeDates {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+
+/* Too narrow for preset and dates on one row: the dates wrap below the preset (data-stacked). */
+.rangeControl {
+  flex-wrap: wrap;
+}
+
+.rangeControl[data-stacked] {
+  height: auto;
+  padding: 0;
+  border-radius: var(--via-radius-panel);
+}
+
+.rangeControl[data-stacked] .presetButton {
+  flex: 1 0 100%;
+  min-height: 40px;
+  border-right: 0;
+  border-bottom: 1px solid var(--via-semantic-border-control);
+  border-radius: var(--via-radius-panel) var(--via-radius-panel) 0 0;
+}
+
+.rangeControl[data-stacked] .rangeDates {
+  min-height: 40px;
+  padding-inline-end: var(--via-space-control);
+}
+
+.rangeControl .input {
+  /* Dates never shrink: a clipped date is unreadable. The field is as wide as its content. */
+  flex: none;
+  padding: 0 var(--via-space-control);
+}
+
+.presetButton {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  align-self: stretch;
+  padding: 0 var(--via-space-control);
+  border: 0;
+  border-right: 1px solid var(--via-semantic-border-control);
+  border-radius: var(--via-radius-field) 0 0 var(--via-radius-field);
+  background: transparent;
+  color: var(--via-semantic-text-primary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.presetButton svg {
+  color: var(--via-semantic-text-secondary);
+}
+
+.presetButton[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+/* ---------- Popover ---------- */
+.popover {
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-raised);
+  box-shadow: 0 8px var(--via-elevation-dialog) rgb(16 24 40 / 0.14);
+  z-index: var(--via-layer-dropdown);
+  outline: none;
+}
+
+.popover[data-entering] {
+  animation: fade var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.dialog,
+.rangeDialog {
+  outline: none;
+  font-family: var(--via-font-ui);
+}
+
+.dialog {
+  padding: var(--via-space-field);
+}
+
+.pickerBody {
+  display: flex;
+}
+
+.presets {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 168px;
+  margin: 0;
+  padding: var(--via-space-small);
+  border-right: 1px solid var(--via-semantic-border-decorative);
+  list-style: none;
+}
+
+.preset {
+  width: 100%;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--via-radius-control);
+  background: transparent;
+  color: var(--via-semantic-text-primary);
+  font: inherit;
+  font-size: var(--via-type-label);
+  text-align: left;
+  cursor: pointer;
+}
+
+.preset[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.presetActive,
+.presetActive[data-hovered] {
+  background: var(--via-semantic-navigation-active-background);
+  color: var(--via-semantic-navigation-active-foreground);
+  font-weight: 700;
+}
+
+.pickerCalendar {
+  padding: var(--via-space-field);
+}
+
+.pickerFooter {
+  display: flex;
+  align-items: center;
+  gap: var(--via-space-small);
+  padding: 10px var(--via-space-field);
+  border-top: 1px solid var(--via-semantic-border-decorative);
+}
+
+.summary {
+  flex: 1;
+  color: var(--via-semantic-text-secondary);
+  font-size: var(--via-type-metadata);
+}
+
+@media (max-width: 767px) {
+  .pickerBody {
+    flex-direction: column;
+  }
+
+  .presets {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--via-semantic-border-decorative);
+  }
+
+  .presets li {
+    flex: none;
+  }
+}
+
+/* ---------- Calendar grid ---------- */
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-small);
+  width: 252px;
+  font-family: var(--via-font-ui);
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendarHeading {
+  margin: 0;
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-label);
+  font-weight: 700;
+}
+
+.grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.weekday {
+  height: 28px;
+  color: var(--via-semantic-text-secondary);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  border-radius: 50%;
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-metadata);
+  cursor: pointer;
+  outline: none;
+}
+
+.cell[data-outside-month] {
+  display: none;
+}
+
+.cell[data-hovered] {
+  background: var(--via-semantic-surface-hover);
+}
+
+.cell[data-selected] {
+  border-radius: 0;
+  background: var(--via-semantic-surface-selected);
+}
+
+.cell[data-selection-start],
+.cell[data-selection-end],
+.calendar:not(:has([data-selection-start])) .cell[data-selected] {
+  border-radius: 50%;
+  background: var(--via-semantic-action-background);
+  color: var(--via-semantic-action-foreground);
+  font-weight: 700;
+}
+
+.cell[data-focus-visible] {
+  outline: var(--via-focus-width) solid var(--via-semantic-focus-ring);
+  outline-offset: 1px;
+}
+
+.cell[data-disabled],
+.cell[data-unavailable] {
+  color: var(--via-semantic-disabled-foreground);
+  cursor: not-allowed;
+}
+
+.cell[data-today]:not([data-selected])::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  margin-top: 22px;
+  border-radius: 50%;
+  background: var(--via-semantic-action-background);
+}

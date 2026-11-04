@@ -1,0 +1,129 @@
+.overlay {
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.modal {
+  display: flex;
+  width: 560px;
+  max-width: 100%;
+  max-height: calc(100dvh - 16px);
+  overflow: hidden;
+  border: 1px solid var(--via-semantic-border-decorative);
+  border-radius: var(--via-radius-panel);
+  background: var(--via-semantic-surface-raised);
+  box-shadow: 0 8px var(--via-elevation-dialog) rgb(16 36 58 / 0.15);
+  outline: none;
+}
+
+.md {
+  width: 720px;
+}
+
+.modal[data-entering] {
+  animation: rise var(--via-motion-overlay-enter) var(--via-motion-easing-emphasised);
+}
+
+.modal[data-exiting] {
+  animation: rise var(--via-motion-overlay-exit) var(--via-motion-easing-exit) reverse;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes rise {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+.dialog {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 0;
+  padding: 28px;
+  outline: none;
+}
+
+/* Only the message and fields scroll; title and actions stay in view on short screens. */
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.content:empty {
+  display: none;
+}
+
+.header,
+.actions {
+  flex: none;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--via-space-control);
+}
+
+.title {
+  flex: 1;
+  font-size: var(--via-type-title);
+}
+
+.close {
+  margin: -10px -14px 0 0;
+}
+
+.description {
+  color: var(--via-semantic-text-primary);
+  font-size: var(--via-type-body);
+  line-height: var(--via-type-body-line);
+}
+
+.description p {
+  margin: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--via-space-field);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  /* 16 px viewport gutters and 20 px dialog padding (Overlay / Dialog, narrow). */
+  .overlay {
+    padding: var(--via-space-field);
+  }
+
+  .modal {
+    max-height: calc(100dvh - 32px);
+  }
+
+  .dialog {
+    padding: 20px;
+  }
+
+  .actions > * {
+    width: 100%;
+  }
+}

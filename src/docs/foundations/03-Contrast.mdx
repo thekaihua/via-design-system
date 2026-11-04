@@ -1,0 +1,13 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ContrastTable } from './TokenDocs';
+
+<Meta title="Foundations/Contrast" />
+
+# Contrast
+
+WCAG 2.2 AA: **4.5:1** for text, **3:1** for large text and non-text UI (borders,
+focus rings, chart marks). These pairings are checked in both themes by
+`src/tokens/tokens.test.ts`; a failing pair fails `npm test` unless it's listed as a
+known issue in `src/tokens/contrast.ts`.
+
+<ContrastTable />
