@@ -16,7 +16,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Use one primary button per view. Disabled buttons stay focusable with `aria-disabled` so a tooltip can explain why. `loading` keeps the label, shows a spinner and ignores repeat presses. `gradient` is for marketing and hero CTAs only.',
+          'Use one primary button per view. Disabled buttons stay focusable with `aria-disabled` so a tooltip can explain why. `loading` keeps the label, shows a spinner and ignores repeat presses.',
       },
     },
   },
@@ -43,7 +43,6 @@ export const Destructive: Story = {
   args: { variant: 'destructive', children: 'Revoke key', leadingIcon: Trash2 },
 };
 
-export const Gradient: Story = { args: { variant: 'gradient', size: 'lg' } };
 
 export const Sizes: Story = {
   render: (args) => (
@@ -105,7 +104,7 @@ export const FocusRing: Story = {
 export const AllVariants: Story = {
   render: (args) => (
     <div style={{ display: 'grid', gap: 16 }}>
-      {(['primary', 'secondary', 'destructive', 'gradient'] as const).map((variant) => (
+      {(['primary', 'secondary', 'destructive'] as const).map((variant) => (
         <ButtonGroup key={variant} align="start" aria-label={variant}>
           {(['sm', 'md', 'lg'] as const).map((size) => (
             <Button key={size} {...args} variant={variant} size={size}>

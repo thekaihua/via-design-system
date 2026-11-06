@@ -236,6 +236,7 @@
 
 .avatar {
   display: inline-flex;
+  flex: none;
   align-items: center;
   justify-content: center;
   width: 36px;
@@ -245,6 +246,11 @@
   color: var(--via-semantic-info-foreground);
   font-size: var(--via-type-metadata);
   font-weight: 700;
+}
+
+.accountName {
+  /* One line: a wrapped name squeezes the avatar and grows the header. */
+  white-space: nowrap;
 }
 
 .menuContext {
@@ -268,8 +274,14 @@
 
 .rail {
   width: 72px;
-  padding: var(--via-space-field) 12px;
+  padding: var(--via-space-field) 0;
   align-items: center;
+  /*
+   * When the rail scrolls and the system shows classic scroll bars, keep the same space on both sides so
+   * the icons stay centred (and a thin bar leaves 48 px for them).
+   */
+  scrollbar-gutter: stable both-edges;
+  scrollbar-width: thin;
 }
 
 .drawerOverlay {
@@ -329,7 +341,9 @@
 }
 
 .rail .workspace {
+  flex: none;
   justify-content: center;
+  width: 48px;
   padding: var(--via-space-small);
 }
 
@@ -402,6 +416,11 @@
   text-decoration: none;
   cursor: pointer;
   transition: background-color var(--via-motion-feedback) var(--via-motion-easing);
+}
+
+/* Centre the 48 px items in the rail like the workspace switcher. */
+.rail .navList {
+  align-items: center;
 }
 
 .rail .navItem {

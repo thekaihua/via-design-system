@@ -89,7 +89,9 @@ export const contrastPairs: ContrastPair[] = [
   ...([1, 2, 3, 4, 5, 6] as const).map((i) =>
     ui(`via.chart.series.${i}`, 'via.semantic.surface.default', `Chart series ${i}`),
   ),
-  ui('via.chart.axis', 'via.semantic.surface.default', 'Chart axis labels (graphical)'),
+  // Axis ticks and bar values are text (11–12 px), so they need 4.5 : 1, not the 3 : 1 for graphics.
+  text('via.chart.axis', 'via.semantic.surface.default', 'Chart axis labels and bar values'),
+  text('via.chart.axis', 'via.semantic.surface.raised', 'Chart axis labels and bar values on a raised panel'),
 ];
 
 // Add entries as 'fg|bg': { light?: 'reason', dark?: 'reason' } while a design fix is pending.

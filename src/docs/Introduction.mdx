@@ -25,7 +25,11 @@ can rebrand by overriding tokens after the stylesheet. See **Foundations → Tok
 ## Using this Storybook
 
 - **Theme** (toolbar): switches between light and dark.
-- **Accessibility** panel: axe runs on every story; violations fail the test suite.
+- **Accessibility** panel: axe runs on every story; violations fail the test suite. A few items show as
+  "needs review" because axe can't judge layered content: a tab label under its invisible bold copy (which
+  stops tabs shifting when selected), the page behind an open drawer or side panel, and the header behind a
+  focused skip link. These have been checked and aren't barriers. Chart drawings are left out of axe; their
+  text contrast is checked by the token tests (Foundations → Contrast).
 - **Interactions**: stories with `play` functions are tests of keyboard and pointer behaviour.
 - **Foundations**: tokens, colour, contrast, typography, spacing, focus, motion and layout.
 - **Patterns** and **Screens**: how the components combine into real pages, with the copy and recovery

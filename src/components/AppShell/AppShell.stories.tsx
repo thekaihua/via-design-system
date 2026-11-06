@@ -186,6 +186,25 @@ export const Tablet: Story = {
   name: 'Icon rail (tablet)',
   render: () => <CustomerApp />,
   globals: { viewport: { value: 'tablet' } },
+  play: async ({ canvas }) => {
+    await document.fonts.ready;
+    // Every rail icon shares one centre line, workspace switcher included.
+    const rail = canvas.getByRole('navigation', { name: 'Main' });
+    const centres = [...rail.querySelectorAll('svg')].map((svg) => {
+      const r = svg.getBoundingClientRect();
+      return Math.round(r.left + r.width / 2);
+    });
+    await expect(new Set(centres).size).toBe(1);
+    // A classic scroll bar, when the system shows one, takes the same space on both sides.
+    await expect(getComputedStyle(rail).scrollbarGutter).toBe('stable both-edges');
+    // The account button keeps a round avatar and the name on one line.
+    const account = canvas.getByRole('button', { name: /account menu/ });
+    const avatar = account.querySelector('[aria-hidden="true"]')!.getBoundingClientRect();
+    await expect([Math.round(avatar.width), Math.round(avatar.height)]).toEqual([36, 36]);
+    const name = within(account).getByText('Timothy Cain');
+    // One line is about 20 px; a wrapped name is about 40.
+    await expect(name.getBoundingClientRect().height).toBeLessThan(30);
+  },
 };
 
 export const Mobile: Story = {
