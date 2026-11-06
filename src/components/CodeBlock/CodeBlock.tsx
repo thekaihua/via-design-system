@@ -28,7 +28,8 @@ export function CodeBlock({ code, language, showLineNumbers = true, onCopy, clas
         <figcaption className={styles.language}>{language ?? 'Code'}</figcaption>
         <CopyButton value={code} label={name} showText onCopy={onCopy} />
       </div>
-      <pre className={styles.pre} tabIndex={0} aria-label={name}>
+      {/* Focusable so keyboard users can scroll long lines; a named region so the focus stop is announced. */}
+      <pre className={styles.pre} tabIndex={0} role="region" aria-label={name}>
         <code className={styles.code}>
           {lines.map((line, i) => (
             <span key={i} className={styles.line}>

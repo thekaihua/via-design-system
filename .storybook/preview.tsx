@@ -51,7 +51,13 @@ const preview: Preview = {
       },
     },
     // Accessibility violations fail tests (Storybook UI and Vitest).
-    a11y: { test: 'error' },
+    a11y: {
+      test: 'error',
+      // Chart drawings (Recharts SVG) are hidden from assistive tech, and axe can't work out the colour
+      // behind SVG text, so it reports every tick as "needs review". Their contrast is checked by the
+      // token tests instead (Foundations → Contrast: chart axis labels at 4.5 : 1).
+      context: { exclude: ['.recharts-surface'] },
+    },
     options: {
       storySort: {
         order: [

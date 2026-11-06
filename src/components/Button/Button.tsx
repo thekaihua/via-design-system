@@ -5,11 +5,10 @@ import { cx } from '../../utils/cx';
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Button.module.css';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'destructive' | 'gradient';
+export type ButtonVariant = 'primary' | 'secondary' | 'destructive';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps {
-  /** `gradient` is for marketing and hero CTAs only. */
   variant?: ButtonVariant;
   /** Visual height 28 / 32 / 40 px; the touch target is always at least 44 px. */
   size?: ButtonSize;

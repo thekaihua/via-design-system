@@ -108,21 +108,6 @@
   background: var(--via-semantic-destructive-pressed);
 }
 
-/*
- * Gradient (marketing and hero CTAs only). The gradient colours aren't themed,
- * so the label stays white in both themes; the themed action.foreground is dark
- * in dark mode and would fail contrast on this background.
- */
-.gradient {
-  background: linear-gradient(90deg, var(--via-color-gradient-start), var(--via-color-primary));
-  color: var(--via-color-white);
-}
-
-.gradient[data-hovered],
-.gradient[data-pressed] {
-  background: linear-gradient(90deg, var(--via-color-gradient-start-hover), var(--via-color-brand));
-}
-
 /* Disabled stays focusable (aria-disabled) so a reason tooltip can be read. */
 .button[aria-disabled='true']:not([data-pending]) {
   border-color: transparent;
